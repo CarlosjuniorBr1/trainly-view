@@ -1,0 +1,13 @@
+[
+  {
+    "id": "1",
+    "name": "Introdução a machine learning",
+    "category": "IA"
+  },
+  
+  {
+    "id": "2",
+    "name": "Processamento de linguagem Natural",
+    "category": "IA , NLP"
+  }
+]
