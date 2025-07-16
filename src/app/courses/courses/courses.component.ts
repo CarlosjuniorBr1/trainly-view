@@ -3,6 +3,7 @@ import { Course } from '../model/course';
 import { MatTable, MatTableModule } from "@angular/material/table";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { CoursesService } from '../services/courses.service';
 
 @Component({
   selector: 'app-courses',
@@ -13,18 +14,17 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 })
 export class CoursesComponent {
 
-  courses: Course[] = [
-    {_id: "1", name:"Introdução a machine learning", category: "IA"},
-    {_id: "2", name:"Processamento de linguagem Natural", category: "IA , NLP"}
-  ];
+  courses: Course[] = [];
   displayedColumns = ['name', 'category'];
 
-  constructor(){
+  constructor(
+    private coursesService: CoursesService
+  ) {
 
   }
 
   ngOnInit(): void {
-
+      this.courses = this.coursesService.list();
   }
 
 }
