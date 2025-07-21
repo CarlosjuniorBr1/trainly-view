@@ -19,7 +19,6 @@ export class CoursesService {
     return this.htttpClient.get<Course[]>(this.API)
     .pipe(
       first(),
-      delay(15000),
       tap( courses => console.log(courses)) // tap é usado pra manipular melhor a informação que foi recebida
     );
   }

@@ -10,13 +10,14 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
 import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
+import { MatIcon } from "@angular/material/icon";
+import { CategoryPipe } from "../../shared/pipes/category.pipe";
 
 @Component({
   selector: 'app-courses',
   standalone: true,
   imports: [MatTable, MatTableModule, MatCardModule, MatToolbarModule, HttpClientModule, MatProgressSpinnerModule, AsyncPipe, AsyncPipe,
-    NgIf, NgFor,
-  ],
+    NgIf, MatIcon, CategoryPipe],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })

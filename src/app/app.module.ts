@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -15,6 +16,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     HttpClientModule,
     MatButtonModule,
+    MatIconModule,
   ]
 })
 export class AppModule { }
