@@ -4,10 +4,12 @@ import { MatTable, MatTableModule } from "@angular/material/table";
 import { MatCardModule } from "@angular/material/card";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { CoursesService } from '../services/courses.service';
-import { Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import { AsyncPipe, NgFor, NgIf } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from '../../shared/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-courses',
@@ -24,10 +26,25 @@ export class CoursesComponent {
   displayedColumns = ['name', 'category'];
 
   constructor(
-    private coursesService: CoursesService
+    private coursesService: CoursesService,
+    public dialog: MatDialog,
   ) {
-    this.courses = this.coursesService.list(); // o metodo retorna um observable
+    this.courses = this.coursesService.list()
+      .pipe(
+        catchError(error => {
+          this.onError('Error ao carregar cursos.')
+          return of([])
+        })
+      ); // o metodo retorna um observable
   }
+
+  onError(erroMsg: String) {
+    this.dialog.open(ErrorDialogComponent, {
+      data: erroMsg
+    });
+  }
+
+
 
   ngOnInit(): void {
 
