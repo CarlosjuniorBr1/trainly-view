@@ -6,11 +6,15 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { CoursesService } from '../services/courses.service';
 import { Observable } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { AsyncPipe, NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-courses',
   standalone: true,
-  imports: [MatTable, MatTableModule, MatCardModule, MatToolbarModule, HttpClientModule],
+  imports: [MatTable, MatTableModule, MatCardModule, MatToolbarModule, HttpClientModule, MatProgressSpinnerModule, AsyncPipe, AsyncPipe,
+    NgIf, NgFor,
+  ],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss'
 })

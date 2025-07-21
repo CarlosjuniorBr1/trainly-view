@@ -2,7 +2,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from '../model/course';
-import { tap } from 'rxjs';
+import { delay, first, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,8 @@ export class CoursesService {
   list() {
     return this.htttpClient.get<Course[]>(this.API)
     .pipe(
+      first(),
+      delay(15000),
       tap( courses => console.log(courses)) // tap é usado pra manipular melhor a informação que foi recebida
     );
   }
